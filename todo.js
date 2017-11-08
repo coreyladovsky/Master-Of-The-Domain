@@ -1,11 +1,14 @@
-const todoList = $l(".todo-list");
 
 
 
-todoList.append(newli);
+
 
 const todoButton = $l(".todo-submit-button");
 todoButton.on("click", () => {
-  const newTodo = $("input");
-  todoList.append(newTodo);
+  const newTodo = $l("input");
+  const userVal = newTodo.htmlElements[0].value;
+  const newLi = $l("<li>");
+  const todoList = $l(".todo-list");
+  newLi.append(userVal);
+  todoList.append(newLi);
 });
