@@ -10,6 +10,9 @@ With the aid of Master Of The Domain users are able to:
  * Traverse DOM elements.
  * And MORE!
 
+ ## How to start?
+  Starting to use Master Of The Domain is as easy as downloading it and including "./lib/master_of_the_domain.js" in your HTML file.
+
  ### $l(selector)
  This is used as a global variable wrapper for all methods in Master Of The Domain.
  The most common functionality is to pass it a single string argument. It will then return a DOMNodeCollection object (array of HTMLElements) that includes all instances of that CSS selector.
@@ -72,7 +75,7 @@ Is a merge like function that is non mutating. Used to combine multiple objects.
 
 ### $l.ajax
 Will return a JSON response after an ajax request has been submitted.
-Uses a XMLHttpRequest to make the actual request. 
+Uses a XMLHttpRequest to make the actual request.
 
 
 
