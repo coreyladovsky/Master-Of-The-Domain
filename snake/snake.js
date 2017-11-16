@@ -32,19 +32,14 @@ class Snake {
     }
   }
 
-  validMove(coord) {
-    let nextHead = this.head().plus(coord);
-    if(nextHead.j < 0 || nextHead.j > this.dimentions) {
-      return false;
-    }
-    if(this.head().i % 25 && this.direction === "E") {
-      return false;
-    }
-    if(this.head().i === 24 && this.direction === "W"){
-      return false;
-    }
+  validMove() {
+    if(this.head().j === 0 && this.direction === "N") return false;
+    if(this.head().j === 24 && this.direction === "S") return false;
+    if(this.head().i === 0 && this.direction === "E") return false;
+    if(this.head().i === 24 && this.direction === "W") return false;
     return true;
   }
+
 
 }
 

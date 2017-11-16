@@ -105,28 +105,26 @@ class View {
   }
 
   handleKeyEvent(event) {
-    console.log("event: " + event.key);
     switch (event.key) {
       case "ArrowUp":
       case "w":
-      this.board.snake.turn("N");
+        this.board.snake.turn("N");
       break;
       case "ArrowDown":
       case "s":
-      this.board.snake.turn("S");
+        this.board.snake.turn("S");
       break;
       case "ArrowRight":
       case "d":
-      this.board.snake.turn("W");
+        this.board.snake.turn("W");
       break;
       case "ArrowLeft":
       case "a":
-      this.board.snake.turn("E");
+        this.board.snake.turn("E");
       break;
       default:
-      console.log("Please keep your eyes and attention on the game!");
-      console.log("https://github.com/coreyladovsky");
-
+        console.log("Please keep your eyes and attention on the game!");
+        console.log("https://github.com/coreyladovsky");
     }
   }
 
@@ -144,9 +142,13 @@ class View {
   }
 
   step() {
-    // debugger
-    this.board.snake.move();
-    this.render();
+    if (this.board.snake.validMove()) {
+      this.board.snake.move();
+      this.render();
+    } else {
+      clearInterval(this.stopInterval);
+      alert("YOU LOSE!")
+    }
   }
 
   render() {
@@ -247,19 +249,14 @@ class Snake {
     }
   }
 
-  validMove(coord) {
-    let nextHead = this.head().plus(coord);
-    if(nextHead.j < 0 || nextHead.j > this.dimentions) {
-      return false;
-    }
-    if(this.head().i % 25 && this.direction === "E") {
-      return false;
-    }
-    if(this.head().i === 24 && this.direction === "W"){
-      return false;
-    }
+  validMove() {
+    if(this.head().j === 0 && this.direction === "N") return false;
+    if(this.head().j === 24 && this.direction === "S") return false;
+    if(this.head().i === 0 && this.direction === "E") return false;
+    if(this.head().i === 24 && this.direction === "W") return false;
     return true;
   }
+
 
 }
 
