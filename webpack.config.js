@@ -1,8 +1,8 @@
 module.exports = {
-  entry: "./lib/main.js",
+  entry: "./snake/game.js",
   output: {
     path: __dirname,
-    filename: "./lib/master_of_the_domain.js"
+    filename: "bundle.js"
 	},
 	devtool: "source-map"
 };

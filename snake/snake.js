@@ -1,4 +1,5 @@
-const Coord = require("./coord.js");
+
+import Coord from "./coord.js";
 
 class Snake {
   constructor() {
@@ -6,18 +7,19 @@ class Snake {
     this.direction = "S";
     this.segments = [new Coord(0,0)];
     this.directions = {
-                      "N": new Coord(0, 1),
-                      "S": new Coord(0, -1),
-                      "E": new Coord(-1, 0),
-                      "W": new Coord(1, 0)
+                      "N": new Coord(0, -1),
+                      "S": new Coord(0, 1),
+                      "E": new Coord(1, 0),
+                      "W": new Coord(-1, 0)
                       };
   }
 
 
   move() {
-    this.segmetns.forEach( segment => {
-      segment.plus(this.directions[this.direction]);
-    });
+
+      this.segments.push(this.segments[this.segments.length - 1].plus(this.directions[this.direction]));
+      this.segments.shift();
+
   }
 
   turn(direc) {
@@ -30,4 +32,4 @@ class Snake {
 
 }
 
-export default Snake; 
+export default Snake;

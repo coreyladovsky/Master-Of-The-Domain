@@ -1,4 +1,4 @@
-const Snake = require("./snake.js");
+import Snake from "./snake.js";
 
 class Board {
   constructor(dimentions) {
@@ -23,7 +23,7 @@ class Board {
   render() {
     let board = this.makeBoard(this.dimentions);
     this.snake.segments.forEach( segment => {
-      board[segment.i][segment.j] = "S";
+      board[segment.i][segment.j] = "G";
     });
 
   }

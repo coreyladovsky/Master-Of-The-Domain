@@ -1,5 +1,7 @@
-const View = require("./snake-view.js")
 
-$l(function () {
-  new View($l(".snake-attack"));
+import View from "./snake-view.js";
+
+$l(() => {
+  let play = $l(".snake-attack");
+    new View(play);
 });

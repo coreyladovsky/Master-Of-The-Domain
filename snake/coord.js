@@ -5,7 +5,7 @@ class Coord {
   }
 
   plus(coord) {
-    return Coord(this.i + coord.i, this.j + coord.j);
+    return new Coord(this.i + coord.i, this.j + coord.j);
   }
 
   equals(coord) {
@@ -25,4 +25,4 @@ class Coord {
 }
 
 
-export default Coord; 
+export default Coord;

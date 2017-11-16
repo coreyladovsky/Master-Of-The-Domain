@@ -1,0 +1,28 @@
+li {
+  list-style: none;
+  height: 15px;
+  width: 15px;
+  border: 1px solid red;
+}
+
+.snake-attack {
+  border: 5px solid green;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.green {
+  background-color: green;
+}
+
+
+ul {
+  display: flex;
+  margin: 0;
+  align-self: center;
+}
+
+body {
+  overflow: hidden; 
+}
