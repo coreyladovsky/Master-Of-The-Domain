@@ -234,8 +234,8 @@ class Snake {
   }
   move() {
 
-      // this.segments.push(this.head().plus(this.directions[this.direction]));
-      // this.segments.shift();
+      this.segments.push(this.head().plus(this.directions[this.direction]));
+      this.segments.shift();
 
   }
 
