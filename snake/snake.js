@@ -9,8 +9,8 @@ class Snake {
     this.directions = {
                       "N": new Coord(0, -1),
                       "S": new Coord(0, 1),
-                      "E": new Coord(1, 0),
-                      "W": new Coord(-1, 0)
+                      "E": new Coord(-1, 0),
+                      "W": new Coord(1, 0)
                       };
   }
 
@@ -23,7 +23,7 @@ class Snake {
   }
 
   turn(direc) {
-    if(direc.isOpposite(this.directions)) {
+    if(this.directions[direc].isOpposite(this.directions[this.direction])) {
       return;
     } else {
         this.direction = direc;

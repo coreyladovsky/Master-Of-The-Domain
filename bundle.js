@@ -91,6 +91,7 @@ $l(() => {
 
 
 
+
 class View {
   constructor($lel) {
     this.$lel = $lel;
@@ -99,13 +100,12 @@ class View {
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
 
     this.stopInterval = window.setInterval(this.step.bind(this), 500);
+    $l("html").on("keydown", (e) => this.handleKeyEvent(e));
 
-
-    $l(document).on("keydown", this.handleKeyEvent);
   }
 
   handleKeyEvent(event) {
-    debugger
+    console.log("event: " + event.key);
     switch (event.key) {
       case "ArrowUp":
       case "w":
@@ -144,6 +144,7 @@ class View {
   }
 
   step() {
+    // debugger
     this.board.snake.move();
     this.render();
   }
@@ -156,12 +157,9 @@ class View {
     });
   }
 
-
-
-
-
-
 }
+
+
 /* harmony default export */ __webpack_exports__["a"] = (View);
 
 
@@ -224,8 +222,8 @@ class Snake {
     this.directions = {
                       "N": new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](0, -1),
                       "S": new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](0, 1),
-                      "E": new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](1, 0),
-                      "W": new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](-1, 0)
+                      "E": new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](-1, 0),
+                      "W": new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](1, 0)
                       };
   }
 
@@ -238,7 +236,7 @@ class Snake {
   }
 
   turn(direc) {
-    if(direc.isOpposite(this.directions)) {
+    if(this.directions[direc].isOpposite(this.directions[this.direction])) {
       return;
     } else {
         this.direction = direc;

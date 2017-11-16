@@ -2,6 +2,7 @@
 import Board from "./board.js";
 
 
+
 class View {
   constructor($lel) {
     this.$lel = $lel;
@@ -10,13 +11,12 @@ class View {
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
 
     this.stopInterval = window.setInterval(this.step.bind(this), 500);
+    $l("html").on("keydown", (e) => this.handleKeyEvent(e));
 
-
-    $l(document).on("keydown", this.handleKeyEvent);
   }
 
   handleKeyEvent(event) {
-    debugger
+    console.log("event: " + event.key);
     switch (event.key) {
       case "ArrowUp":
       case "w":
@@ -55,6 +55,7 @@ class View {
   }
 
   step() {
+    // debugger
     this.board.snake.move();
     this.render();
   }
@@ -67,10 +68,7 @@ class View {
     });
   }
 
-
-
-
-
-
 }
+
+
 export default View;
