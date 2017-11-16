@@ -10,7 +10,7 @@ class View {
     this.viewBoard();
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
 
-    this.stopInterval = window.setInterval(this.step.bind(this), 500);
+    this.stopInterval = window.setInterval(this.step.bind(this), 100);
     $l("html").on("keydown", (e) => this.handleKeyEvent(e));
 
   }

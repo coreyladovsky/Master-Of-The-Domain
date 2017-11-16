@@ -20,6 +20,8 @@ class Board {
   }
 
 
+
+
   render() {
     let board = this.makeBoard(this.dimentions);
     this.snake.segments.forEach( segment => {

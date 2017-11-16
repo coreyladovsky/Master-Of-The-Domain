@@ -99,7 +99,7 @@ class View {
     this.viewBoard();
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
 
-    this.stopInterval = window.setInterval(this.step.bind(this), 500);
+    this.stopInterval = window.setInterval(this.step.bind(this), 100);
     $l("html").on("keydown", (e) => this.handleKeyEvent(e));
 
   }
@@ -191,6 +191,8 @@ class Board {
   }
 
 
+
+
   render() {
     let board = this.makeBoard(this.dimentions);
     this.snake.segments.forEach( segment => {
@@ -218,7 +220,7 @@ class Snake {
   constructor() {
 
     this.direction = "S";
-    this.segments = [new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](0,0)];
+    this.segments = [new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](0,0 )];
     this.directions = {
                       "N": new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](0, -1),
                       "S": new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](0, 1),
@@ -227,11 +229,13 @@ class Snake {
                       };
   }
 
-
+  head() {
+    return this.segments[this.segments.length - 1];
+  }
   move() {
 
-      this.segments.push(this.segments[this.segments.length - 1].plus(this.directions[this.direction]));
-      this.segments.shift();
+      // this.segments.push(this.head().plus(this.directions[this.direction]));
+      // this.segments.shift();
 
   }
 
@@ -241,6 +245,20 @@ class Snake {
     } else {
         this.direction = direc;
     }
+  }
+
+  validMove(coord) {
+    let nextHead = this.head().plus(coord);
+    if(nextHead.j < 0 || nextHead.j > this.dimentions) {
+      return false;
+    }
+    if(this.head().i % 25 && this.direction === "E") {
+      return false;
+    }
+    if(this.head().i === 24 && this.direction === "W"){
+      return false;
+    }
+    return true;
   }
 
 }
