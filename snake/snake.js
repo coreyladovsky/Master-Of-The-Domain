@@ -22,6 +22,7 @@ class Snake {
   move() {
 
       this.segments.push(this.head().plus(this.directions[this.direction]));
+      this.eatsApple();
       if(this.growAmount > 0) {
         this.growAmount--;
       } else {

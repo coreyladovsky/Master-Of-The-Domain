@@ -3,9 +3,9 @@ import Apple from "./apple.js";
 
 class Board {
   constructor(dimentions) {
+    this.dimentions = dimentions;
     this.snake = new Snake(this);
     this.apple = new Apple(this);
-    this.dimentions = dimentions;
     this.makeBoard = this.makeBoard.bind(this);
   }
 

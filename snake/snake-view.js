@@ -54,7 +54,6 @@ class View {
 
   step() {
     if (this.board.snake.validMove() && !this.board.snake.hitSelf()) {
-      this.board.snake.eatsApple();
       this.board.snake.move();
       this.render();
     } else {

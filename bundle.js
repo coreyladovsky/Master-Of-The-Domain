@@ -143,7 +143,6 @@ class View {
 
   step() {
     if (this.board.snake.validMove() && !this.board.snake.hitSelf()) {
-      this.board.snake.eatsApple();
       this.board.snake.move();
       this.render();
     } else {
@@ -182,9 +181,9 @@ class View {
 
 class Board {
   constructor(dimentions) {
+    this.dimentions = dimentions;
     this.snake = new __WEBPACK_IMPORTED_MODULE_0__snake_js__["a" /* default */](this);
     this.apple = new __WEBPACK_IMPORTED_MODULE_1__apple_js__["a" /* default */](this);
-    this.dimentions = dimentions;
     this.makeBoard = this.makeBoard.bind(this);
   }
 
@@ -248,6 +247,7 @@ class Snake {
   move() {
 
       this.segments.push(this.head().plus(this.directions[this.direction]));
+      this.eatsApple();
       if(this.growAmount > 0) {
         this.growAmount--;
       } else {
@@ -346,16 +346,17 @@ class Apple {
   }
 
   findSquare() {
-    let x = Math.floor(Math.random() * this.board.dim);
-    let y = Math.floor(Math.random() * this.board.dim);
-    let segs = this.board.snake.segments
+    let x = Math.floor(Math.random() * this.board.dimentions);
+    let y = Math.floor(Math.random() * this.board.dimentions);
+    let segs = this.board.snake.segments;
     for(let i = 0; i < segs.length; i++) {
       if(segs[i].i === x && segs[i].j === y) {
-        findSquare();
+        this.findSquare();
       } else {
         this.position = new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](x, y);
       }
     }
+    // debugger
   }
 }
 
