@@ -53,12 +53,13 @@ class View {
   }
 
   step() {
-    if (this.board.snake.validMove()) {
+    if (this.board.snake.validMove() && !this.board.snake.hitSelf()) {
+      this.board.snake.eatsApple();
       this.board.snake.move();
       this.render();
     } else {
       clearInterval(this.stopInterval);
-      alert("YOU LOSE!")
+      alert("YOU LOSE!");
     }
   }
 
@@ -68,6 +69,10 @@ class View {
       let idx = (segment.j * this.board.dimentions) + segment.i;
       $l($l("li").htmlElements[idx]).addClass("green");
     });
+    $l("li").removeClass("red");
+    let app = this.board.apple.position;
+    let jdx = (app.j * this.board.dimentions) + app.i;
+    $l($l("li").htmlElements[jdx]).addClass("red");
   }
 
 }

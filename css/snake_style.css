@@ -16,6 +16,9 @@ li {
   background-color: green;
 }
 
+.red {
+  background-color: red; 
+}
 
 ul {
   display: flex;
@@ -24,5 +27,5 @@ ul {
 }
 
 body {
-  overflow: hidden; 
+  overflow: hidden;
 }

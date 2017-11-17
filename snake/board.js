@@ -1,8 +1,10 @@
 import Snake from "./snake.js";
+import Apple from "./apple.js";
 
 class Board {
   constructor(dimentions) {
-    this.snake = new Snake();
+    this.snake = new Snake(this);
+    this.apple = new Apple(this);
     this.dimentions = dimentions;
     this.makeBoard = this.makeBoard.bind(this);
   }
@@ -27,6 +29,7 @@ class Board {
     this.snake.segments.forEach( segment => {
       board[segment.i][segment.j] = "G";
     });
+    board[this.apple.position.i][this.apple.position.j] = "A";
 
   }
 

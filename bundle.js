@@ -142,12 +142,13 @@ class View {
   }
 
   step() {
-    if (this.board.snake.validMove()) {
+    if (this.board.snake.validMove() && !this.board.snake.hitSelf()) {
+      this.board.snake.eatsApple();
       this.board.snake.move();
       this.render();
     } else {
       clearInterval(this.stopInterval);
-      alert("YOU LOSE!")
+      alert("YOU LOSE!");
     }
   }
 
@@ -157,6 +158,10 @@ class View {
       let idx = (segment.j * this.board.dimentions) + segment.i;
       $l($l("li").htmlElements[idx]).addClass("green");
     });
+    $l("li").removeClass("red");
+    let app = this.board.apple.position;
+    let jdx = (app.j * this.board.dimentions) + app.i;
+    $l($l("li").htmlElements[jdx]).addClass("red");
   }
 
 }
@@ -171,11 +176,14 @@ class View {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snake_js__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__apple_js__ = __webpack_require__(8);
+
 
 
 class Board {
   constructor(dimentions) {
-    this.snake = new __WEBPACK_IMPORTED_MODULE_0__snake_js__["a" /* default */]();
+    this.snake = new __WEBPACK_IMPORTED_MODULE_0__snake_js__["a" /* default */](this);
+    this.apple = new __WEBPACK_IMPORTED_MODULE_1__apple_js__["a" /* default */](this);
     this.dimentions = dimentions;
     this.makeBoard = this.makeBoard.bind(this);
   }
@@ -200,6 +208,7 @@ class Board {
     this.snake.segments.forEach( segment => {
       board[segment.i][segment.j] = "G";
     });
+    board[this.apple.position.i][this.apple.position.j] = "A";
 
   }
 
@@ -219,7 +228,7 @@ class Board {
 
 
 class Snake {
-  constructor() {
+  constructor(board) {
 
     this.direction = "S";
     this.segments = [new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](0,0 )];
@@ -229,6 +238,8 @@ class Snake {
                       "E": new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](-1, 0),
                       "W": new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](1, 0)
                       };
+    this.board = board;
+    this.growAmount = 0;
   }
 
   head() {
@@ -237,8 +248,18 @@ class Snake {
   move() {
 
       this.segments.push(this.head().plus(this.directions[this.direction]));
-      this.segments.shift();
+      if(this.growAmount > 0) {
+        this.growAmount--;
+      } else {
+          this.segments.shift();
+      }
+  }
 
+  eatsApple(){
+    if(this.head().equals(this.board.apple.position)) {
+      this.growAmount = 5;
+      this.board.apple.findSquare();
+    }
   }
 
   turn(direc) {
@@ -257,8 +278,9 @@ class Snake {
     return true;
   }
 
-  hitSelf(coord) {
-    let nextHead = this.head().plus(coord);
+  hitSelf() {
+    if(this.segments.length === 0) return false;
+    let nextHead = this.head().plus(this.directions[this.direction]);
     for(let i = 0; i < this.segments.length - 1; i++){
       if(nextHead.equals(this.segments[i])) {
         return true;
@@ -306,6 +328,38 @@ class Coord {
 
 
 /* harmony default export */ __webpack_exports__["a"] = (Coord);
+
+
+/***/ }),
+/* 7 */,
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coord_js__ = __webpack_require__(6);
+
+
+class Apple {
+  constructor(board) {
+    this.board = board;
+    this.findSquare();
+  }
+
+  findSquare() {
+    let x = Math.floor(Math.random() * this.board.dim);
+    let y = Math.floor(Math.random() * this.board.dim);
+    let segs = this.board.snake.segments
+    for(let i = 0; i < segs.length; i++) {
+      if(segs[i].i === x && segs[i].j === y) {
+        findSquare();
+      } else {
+        this.position = new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](x, y);
+      }
+    }
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (Apple);
 
 
 /***/ })
