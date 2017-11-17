@@ -18,7 +18,7 @@ li {
   text-align: center;
   margin-bottom: 30px;
   color: white;
-  font-family: "Press Start 2P"
+  font-family: "Holtwood One SC";
 }
 
 .contact {
@@ -28,15 +28,16 @@ li {
 .instructions {
   color: white;
   align-self: left;
-  font-size: 25px;
-  font-family: sans-serif;
+  font-size: 17px;
+  font-family: "Holtwood One SC";
   text-align: left;
   line-height: 40px;
-  width: 600px;
+  width: 400px;
   background-color: black;
   border-radius: 4px;
   border: 3px solid white;
-  width: 320px;
+  padding: 15px;
+  margin-top: 45px; 
 }
 
 .instruc {
@@ -62,7 +63,7 @@ li {
 }
 
 h1 {
-  font-family: "Press Start 2P";
+  font-family: "Holtwood One SC";
   font-size: 40px;
 }
 
