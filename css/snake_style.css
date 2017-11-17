@@ -2,7 +2,7 @@ li {
   list-style: none;
   height: 15px;
   width: 15px;
-  border: 1px solid lightgray;
+  border: 1px solid gray;
 }
 
 .snake-box {
@@ -10,6 +10,19 @@ li {
   justify-content: space-around;
   background-color: black;
   margin-top: 40px;
+  /*border: 1px solid yellow;*/
+}
+
+.creator {
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+  font-family: "Press Start 2P"
+}
+
+.contact {
+  color: white;
 }
 
 .instructions {
@@ -21,7 +34,6 @@ li {
   line-height: 40px;
   width: 600px;
   background-color: black;
-  margin-left: 10%;
   border-radius: 4px;
   border: 3px solid white;
   width: 320px;
@@ -36,7 +48,7 @@ li {
   border: 5px solid green;
   display: flex;
   flex-direction: column;
-  cursor: none; 
+  cursor: none;
   /*width: 400px;*/
 
 }
@@ -50,7 +62,7 @@ li {
 }
 
 h1 {
-  font-family: sans-serif;
+  font-family: "Press Start 2P";
   font-size: 40px;
 }
 
@@ -66,4 +78,26 @@ body {
   background-color: black;
   color: white;
   text-align: center;
+  content: center;
+
+}
+
+
+.link-list-gameover {
+  display: flex;
+  justify-content: flex-end;
+  color: white;
+  font-size: 30px;
+  list-style-type: none;
+  bottom: 10px;
+  right: 20px;
+  position: absolute;
+}
+
+.link-list-gameover div {
+  margin-right: 30px;
+}
+
+.linked-in-link {
+  color: white;
 }
