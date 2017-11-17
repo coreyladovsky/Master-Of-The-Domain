@@ -35,7 +35,7 @@ class View {
       break;
       default:
         console.log("Please keep your eyes and attention on the game!");
-        console.log("https://github.com/coreyladovsky");
+        console.log("https://www.github.com/coreyladovsky");
     }
   }
 

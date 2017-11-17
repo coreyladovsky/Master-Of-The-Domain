@@ -2,13 +2,42 @@ li {
   list-style: none;
   height: 15px;
   width: 15px;
-  border: 1px solid red;
+  border: 1px solid lightgray;
 }
+
+.snake-box {
+  display: flex;
+  justify-content: space-around;
+  background-color: black;
+  margin-top: 40px;
+}
+
+.instructions {
+  color: white;
+  align-self: left;
+  font-size: 25px;
+  font-family: sans-serif;
+  text-align: left;
+  line-height: 40px;
+  width: 600px;
+  background-color: black;
+  margin-left: 10%;
+  border-radius: 4px;
+  border: 3px solid white;
+  width: 320px;
+}
+
+.instruc {
+  font-size: 30px;
+}
+
 
 .snake-attack {
   border: 5px solid green;
   display: flex;
   flex-direction: column;
+  cursor: none; 
+  /*width: 400px;*/
 
 }
 
@@ -17,15 +46,24 @@ li {
 }
 
 .red {
-  background-color: red; 
+  background-color: red;
+}
+
+h1 {
+  font-family: sans-serif;
+  font-size: 40px;
 }
 
 ul {
   display: flex;
   margin: 0;
+  padding: 0;
   align-self: center;
 }
 
 body {
   overflow: hidden;
+  background-color: black;
+  color: white;
+  text-align: center;
 }
