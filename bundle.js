@@ -257,6 +257,16 @@ class Snake {
     return true;
   }
 
+  hitSelf(coord) {
+    let nextHead = this.head().plus(coord);
+    for(let i = 0; i < this.segments.length - 1; i++){
+      if(nextHead.equals(this.segments[i])) {
+        return true;
+      }
+    }
+    return false;
+  }
+
 
 }
 
