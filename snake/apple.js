@@ -13,11 +13,11 @@ class Apple {
     for(let i = 0; i < segs.length; i++) {
       if(segs[i].i === x && segs[i].j === y) {
         this.findSquare();
+        break;
       } else {
         this.position = new Coord(x, y);
       }
     }
-    // debugger
   }
 }
 

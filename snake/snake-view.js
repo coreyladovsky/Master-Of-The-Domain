@@ -33,6 +33,9 @@ class View {
       case "a":
         this.board.snake.turn("E");
       break;
+      case " ":
+        window.location.reload();
+      break;
       default:
         console.log("Please keep your eyes and attention on the game!");
         console.log("https://www.github.com/coreyladovsky");
@@ -58,7 +61,9 @@ class View {
       this.render();
     } else {
       clearInterval(this.stopInterval);
-      alert("YOU LOSE!");
+      $l(".loser").append("You Lose! <br> Press SpaceBar to play again.")
+      $l("html").on("keydown", (e) => this.handleKeyEvent(e));
+      // $l("#gameover-page").show();
     }
   }
 

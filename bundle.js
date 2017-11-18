@@ -64,29 +64,64 @@
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */,
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+class Coord {
+  constructor(i, j) {
+    this.i = i;
+    this.j = j;
+  }
+
+  plus(coord) {
+    return new Coord(this.i + coord.i, this.j + coord.j);
+  }
+
+  equals(coord) {
+    if(this.i === coord.i && this.j === coord.j) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isOpposite(coord){
+    if(this.i === -1 * coord.i && this.j === -1 * coord.j) {
+      return true;
+    } else
+    return false;
+  }
+}
+
+
+/* harmony default export */ __webpack_exports__["a"] = (Coord);
+
+
+/***/ }),
 /* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snake_view_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snake_view_js__ = __webpack_require__(2);
 
 
 
 $l(() => {
+  // $l("#gameover-page").hide();
+  // html.getElementById("gameover").style.display = "none";
   let play = $l(".snake-attack");
     new __WEBPACK_IMPORTED_MODULE_0__snake_view_js__["a" /* default */](play);
 });
 
 
 /***/ }),
-/* 2 */,
-/* 3 */
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__board_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__board_js__ = __webpack_require__(3);
 
 
 
@@ -122,6 +157,9 @@ class View {
       case "a":
         this.board.snake.turn("E");
       break;
+      case " ":
+        window.location.reload();
+      break;
       default:
         console.log("Please keep your eyes and attention on the game!");
         console.log("https://www.github.com/coreyladovsky");
@@ -147,7 +185,9 @@ class View {
       this.render();
     } else {
       clearInterval(this.stopInterval);
-      alert("YOU LOSE!");
+      $l(".loser").append("You Lose! <br> Press SpaceBar to play again.")
+      $l("html").on("keydown", (e) => this.handleKeyEvent(e));
+      // $l("#gameover-page").show();
     }
   }
 
@@ -170,12 +210,12 @@ class View {
 
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snake_js__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__apple_js__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snake_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__apple_js__ = __webpack_require__(5);
 
 
 
@@ -218,11 +258,11 @@ class Board {
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coord_js__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coord_js__ = __webpack_require__(0);
 
 
 
@@ -296,47 +336,11 @@ class Snake {
 
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-class Coord {
-  constructor(i, j) {
-    this.i = i;
-    this.j = j;
-  }
-
-  plus(coord) {
-    return new Coord(this.i + coord.i, this.j + coord.j);
-  }
-
-  equals(coord) {
-    if(this.i === coord.i && this.j === coord.j) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  isOpposite(coord){
-    if(this.i === -1 * coord.i && this.j === -1 * coord.j) {
-      return true;
-    } else
-    return false;
-  }
-}
-
-
-/* harmony default export */ __webpack_exports__["a"] = (Coord);
-
-
-/***/ }),
-/* 7 */,
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coord_js__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coord_js__ = __webpack_require__(0);
 
 
 class Apple {
@@ -352,11 +356,11 @@ class Apple {
     for(let i = 0; i < segs.length; i++) {
       if(segs[i].i === x && segs[i].j === y) {
         this.findSquare();
+        break;
       } else {
         this.position = new __WEBPACK_IMPORTED_MODULE_0__coord_js__["a" /* default */](x, y);
       }
     }
-    // debugger
   }
 }
 
