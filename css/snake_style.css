@@ -13,6 +13,11 @@ li {
   /*border: 1px solid yellow;*/
 }
 
+.library {
+  font-family: "Holtwood One SC";
+  font-size: 20px;
+}
+
 .creator {
   font-size: 25px;
   text-align: center;
