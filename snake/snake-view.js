@@ -12,34 +12,41 @@ class View {
 
     this.stopInterval = window.setInterval(this.step.bind(this), 100);
     $l("html").on("keydown", (e) => this.handleKeyEvent(e));
-
+    // this.pending = false;
   }
 
+
   handleKeyEvent(event) {
-    switch (event.key) {
-      case "ArrowUp":
-      case "w":
-        this.board.snake.turn("N");
-      break;
-      case "ArrowDown":
-      case "s":
-        this.board.snake.turn("S");
-      break;
-      case "ArrowRight":
-      case "d":
-        this.board.snake.turn("W");
-      break;
-      case "ArrowLeft":
-      case "a":
-        this.board.snake.turn("E");
-      break;
-      case " ":
-        window.location.reload();
-      break;
-      default:
-        console.log("Please keep your eyes and attention on the game!");
-        console.log("https://www.github.com/coreyladovsky");
-    }
+    console.log(event.key);
+    // let past = Date.now();
+    // if(Date.now() > past + 1) {
+    // if(this.pending) return;
+    // this.pending = true;
+      switch (event.key) {
+        case "ArrowUp":
+        case "w":
+          this.board.snake.turn("N");
+        break;
+        case "ArrowDown":
+        case "s":
+          this.board.snake.turn("S");
+        break;
+        case "ArrowRight":
+        case "d":
+          this.board.snake.turn("W");
+        break;
+        case "ArrowLeft":
+        case "a":
+          this.board.snake.turn("E");
+        break;
+        case " ":
+          window.location.reload();
+        break;
+        default:
+          console.log("Please keep your eyes and attention on the game!");
+          console.log("https://www.github.com/coreyladovsky");
+      }
+      // this.pending = false;
   }
 
   viewBoard() {
@@ -59,6 +66,7 @@ class View {
     if (this.board.snake.validMove() && !this.board.snake.hitSelf()) {
       this.board.snake.move();
       this.render();
+      // this.pending = false;
     } else {
       clearInterval(this.stopInterval);
       $l(".loser").append("You Lose! <br> Press SpaceBar to play again.")
