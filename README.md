@@ -1,6 +1,6 @@
 # Master Of The Domain
 
-Master Of The Domain is a JavaScript DOM manipulator inspired by the wonderful jQuery.You can see it in action [here!](http://www.coreyladovsky.com/Master-Of-The-Domain/)
+Master Of The Domain is a JavaScript DOM manipulator inspired by the wonderful jQuery.You can see it in action [here!](https://www.coreyladovsky.com/Master-Of-The-Domain/)
 
 With the aid of Master Of The Domain users are able to:
  * Select single and multiple DOM elements.
